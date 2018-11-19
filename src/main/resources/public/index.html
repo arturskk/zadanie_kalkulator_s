@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="salaryApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="/module.js"></script>
+</head>
+<body ng-controller="salaryController">
+<div class="container">
+    <div class="row content vertical-center-row">
+        <div class="col-sm-4 col-md-offset-4 text-center ">
+            <div class="well">
+                <label>Dzienna kwota brutto: </label>
+                <input type="text" class="form-control" pattern="[0-9]+(\.[0-9]{1,2})?"
+                       ng-model="dailyGrossAmount" id="grossDailyAmount" required="true"/>
+                <div>
+                    <label>Państwo:</label>
+                    <select class="form-control" ng-model="selectedCurrency" required="true">
+                        <option ng-repeat="country in countriesList">{{country}}</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" class="btn" ng-click="calculateSalary(dailyGrossAmount,selectedCurrency)">
+                        Oblicz
+                    </button>
+                    <p>Kwota netto: {{nettSalary}} PLN</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
